@@ -1,0 +1,144 @@
+/* Global Variables */
+:root {
+    --primary-color: #2874f0;
+    --secondary-color: #fb641b;
+    --text-color: #212121;
+    --text-light: #878787;
+    --bg-color: #f1f3f6;
+    --white: #ffffff;
+    --border-color: #f0f0f0;
+    --success-color: #388e3c;
+    --error-color: #ff6161;
+    --shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
+    --font-family: 'Roboto', sans-serif;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Utilities */
+.container {
+    max-width: 1248px;
+    margin: 0 auto;
+    padding: 0 8px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 2px;
+    box-shadow: var(--shadow);
+}
+
+.btn {
+    padding: 10px 20px;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.mt-1 {
+    margin-top: 8px;
+}
+
+.mb-1 {
+    margin-bottom: 8px;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 4px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+
+.toast.show {
+    opacity: 1;
+}
+
+/* Password Toggle Styles */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    padding-right: 40px !important;
+    /* Make space for the eye icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #878787;
+    z-index: 10;
+}

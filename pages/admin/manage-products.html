@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products - Admin</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <h2 style="text-align: center; color: white; margin-bottom: 30px;">Flipkart Admin</h2>
+            <nav>
+                <a href="dashboard.html" class="admin-nav-item"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
+                <a href="manage-products.html" class="admin-nav-item active"><i class="fa fa-box"></i> Products</a>
+                <a href="manage-orders.html" class="admin-nav-item"><i class="fa fa-shopping-bag"></i> Orders</a>
+                <a href="manage-users.html" class="admin-nav-item"><i class="fa fa-users"></i> Users</a>
+                <a href="../../index.html" class="admin-nav-item"><i class="fa fa-home"></i> Back to Site</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <div class="admin-header">
+                <h1>Manage Products</h1>
+                <button class="btn btn-primary" onclick="openAddProductModal()"><i class="fa fa-plus"></i> Add New
+                    Product</button>
+            </div>
+
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-table-body">
+                        <!-- Filled by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title" style="margin-bottom: 20px;">Add Product</h2>
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="p-title" class="admin-input" required
+                        style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="p-category" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                        <option value="Mobiles">Mobiles</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Home">Home</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Price</label>
+                        <input type="number" id="p-price" required
+                            style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>MRP</label>
+                        <input type="number" id="p-mrp" required
+                            style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" id="p-image" placeholder="https://..." required
+                        style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="p-desc" rows="3" style="width: 100%; padding: 8px; margin-bottom: 10px;"></textarea>
+                </div>
+
+                <div style="text-align: right; margin-top: 20px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../js/utils.js"></script>
+    <script src="../../data/products-data.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/admin.js"></script>
+</body>
+
+</html>

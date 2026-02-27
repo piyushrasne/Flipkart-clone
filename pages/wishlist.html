@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - Flipkart Clone</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/product-card.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .wishlist-container {
+            background: white;
+            padding: 24px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+            min-height: 400px;
+        }
+
+        .wishlist-header {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 16px;
+        }
+
+        .empty-wishlist {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="header-placeholder"></div>
+
+    <main class="container mt-1">
+        <div class="wishlist-container">
+            <div class="wishlist-header">My Wishlist</div>
+
+            <div id="empty-wishlist" class="empty-wishlist">
+                <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/mywishlist-empty_39f7a5.png"
+                    style="width: 200px; margin-bottom: 20px;">
+                <p style="font-size: 18px; margin-bottom: 10px;">Empty Wishlist</p>
+                <p style="font-size: 14px; margin-bottom: 20px;">You have no items in your wishlist. Start adding!</p>
+                <a href="products.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+
+            <div id="wishlist-grid" class="wishlist-grid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../data/products-data.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/wishlist.js"></script>
+</body>
+
+</html>

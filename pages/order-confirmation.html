@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Flipkart Clone</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .confirmation-card {
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .success-icon {
+            color: var(--success-color);
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .order-id {
+            background: #f1f3f6;
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 16px;
+        }
+
+        .btn-home {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 2px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        <div class="confirmation-card">
+            <i class="fa fa-check-circle success-icon"></i>
+            <h1 style="font-weight: 500; margin-bottom: 10px;">Order Placed Successfully!</h1>
+            <p>Thank you for shopping with us.</p>
+
+            <div id="order-details">
+                <div class="order-id" id="display-order-id">Loading...</div>
+                <p>We have sent a confirmation email to your registered email address.</p>
+            </div>
+
+            <div style="margin-top: 30px; display: flex; gap: 10px; justify-content: center;">
+                <button class="btn btn-home" onclick="window.location.href='orders.html'">VIEW ORDER</button>
+                <button class="btn btn-secondary" onclick="window.location.href='../index.html'">CONTINUE
+                    SHOPPING</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            if (orderId) {
+                document.getElementById('display-order-id').innerText = `Order ID: ${orderId}`;
+            }
+        });
+    </script>
+</body>
+
+</html>

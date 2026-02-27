@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Flipkart Clone</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+            background-color: #f1f3f6;
+            min-height: 80vh;
+        }
+
+        .auth-card {
+            background: white;
+            display: flex;
+            width: 850px;
+            height: 528px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .auth-sidebar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 33px;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .auth-sidebar h2 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .auth-sidebar p {
+            font-size: 18px;
+            line-height: 150%;
+            color: #dbdbdb;
+        }
+
+        .auth-form {
+            padding: 56px 35px 16px;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px 10px 10px 0;
+            border: none;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        .form-btn {
+            background: #fb641b;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 12px 0;
+            border-radius: 2px;
+            margin-top: 20px;
+        }
+
+        .auth-footer {
+            margin-top: auto;
+            text-align: center;
+            font-weight: 500;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .create-link {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .auth-card {
+                flex-direction: column;
+                width: 95%;
+                height: auto;
+            }
+
+            .auth-sidebar {
+                width: 100%;
+                padding: 20px;
+                height: 150px;
+            }
+
+            .auth-form {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="header-placeholder"></div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-sidebar">
+                <div>
+                    <h2>Login</h2>
+                    <p>Get access to your Orders, Wishlist and Recommendations</p>
+                </div>
+                <span style="font-size:28px; font-weight:bold; font-style:italic; opacity: 0.8;">Flipkart</span>
+            </div>
+            <div class="auth-form">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Enter Email" required>
+                    </div>
+                    <div class="form-group password-container">
+                        <input type="password" id="password" placeholder="Enter Password" required>
+                        <i class="fa fa-eye toggle-password" onclick="togglePasswordVisibility('password', this)"></i>
+                    </div>
+                    <button type="submit" class="btn form-btn">Login</button>
+
+                    <div style="text-align: center; margin-top: 10px;">
+                        <span>OR</span>
+                    </div>
+
+                    <a href="signup.html" class="create-link">New to Flipkart? Create an account</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+
+</html>

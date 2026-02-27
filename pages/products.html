@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - Flipkart Clone</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/product-card.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .products-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .filter-sidebar {
+            background: white;
+            padding: 16px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+        }
+
+        .filter-section {
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+        }
+
+        .filter-section h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 16px;
+        }
+
+        .sort-bar {
+            background: white;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+        }
+
+        .sort-item {
+            cursor: pointer;
+            color: #212121;
+        }
+
+        .sort-item.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .products-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-sidebar {
+                display: none;
+                /* Hide for now on mobile, add toggle later */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="header-placeholder"></div>
+
+    <main class="container mt-1">
+        <div class="products-layout">
+            <!-- Sidebar Filters -->
+            <aside class="filter-sidebar">
+                <div class="filter-section">
+                    <h4>Filters <span style="color: var(--primary-color); cursor: pointer;"
+                            onclick="clearFilters()">CLEAR ALL</span></h4>
+                </div>
+
+                <div class="filter-section">
+                    <h4>CATEGORIES <i class="fa fa-angle-down"></i></h4>
+                    <div class="checkbox-group" id="category-filters">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h4>PRICE</h4>
+                    <div class="checkbox-group">
+                        <label><input type="radio" name="price" value="under_10000"> Under ₹10,000</label>
+                        <label><input type="radio" name="price" value="10000_20000"> ₹10,000 - ₹20,000</label>
+                        <label><input type="radio" name="price" value="20000_plus"> Over ₹20,000</label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h4>CUSTOMER RATINGS</h4>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="rating" value="4"> 4★ & above</label>
+                        <label><input type="checkbox" name="rating" value="3"> 3★ & above</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Product List -->
+            <div class="products-main">
+                <div class="sort-bar">
+                    <span style="font-weight: 500;">Sort By</span>
+                    <span class="sort-item active" data-sort="relevance">Relevance</span>
+                    <span class="sort-item" data-sort="price_low">Price -- Low to High</span>
+                    <span class="sort-item" data-sort="price_high">Price -- High to Low</span>
+                    <span class="sort-item" data-sort="rating">Customer Rating</span>
+                </div>
+
+                <h3 id="product-count" style="font-size: 16px; margin-bottom: 12px; font-weight: 500;">Showing Products
+                </h3>
+
+                <div id="products-grid" class="products-grid">
+                    <!-- Loaded via JS -->
+                    <div style="width: 100%; text-align: center; grid-column: 1/-1; padding: 40px;">Loading products...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../data/categories-data.js"></script>
+    <script src="../data/products-data.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/products.js"></script>
+</body>
+
+</html>

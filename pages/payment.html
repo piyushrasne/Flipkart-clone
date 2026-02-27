@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Flipkart Clone</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/payment.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div style="background: var(--primary-color); padding: 10px 0;">
+        <div class="container" style="color:white; font-weight:bold; display:flex; align-items:center; gap:20px;">
+            <a href="../index.html"
+                style="font-size:22px; font-weight:bold; color:white; font-style:italic; text-decoration:none;">Flipkart</a>
+            <span style="opacity: 0.8;">SECURE PAYMENTS</span>
+        </div>
+    </div>
+
+    <main class="container mt-1">
+        <h3 style="margin-bottom: 20px; font-weight: 500;">Payment Options</h3>
+
+        <div class="payment-container">
+            <div class="payment-sidebar">
+                <div class="payment-tab active" data-target="upi">UPI</div>
+                <div class="payment-tab" data-target="card">Credit / Debit / ATM Card</div>
+                <div class="payment-tab" data-target="netbanking">Net Banking</div>
+                <div class="payment-tab" data-target="cod">Cash on Delivery</div>
+            </div>
+
+            <div class="payment-content">
+                <!-- UPI -->
+                <div id="upi" class="payment-method-content active">
+                    <div class="pay-header">Choose an option</div>
+                    <div class="input-group">
+                        <label>Your UPI ID</label>
+                        <input type="text" placeholder="e.g. 9876543210@upi">
+                    </div>
+                </div>
+
+                <!-- Card -->
+                <div id="card" class="payment-method-content">
+                    <div class="pay-header">Enter Card Details</div>
+                    <div class="input-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="XXXX XXXX XXXX XXXX">
+                    </div>
+                    <div style="display:flex; gap:20px;">
+                        <div class="input-group">
+                            <label>Valid Thru</label>
+                            <input type="text" placeholder="MM/YY" style="width: 100px;">
+                        </div>
+                        <div class="input-group password-container">
+                            <label>CVV</label>
+                            <input type="password" id="cvv" placeholder="XXX" style="width: 80px;">
+                            <i class="fa fa-eye toggle-password" onclick="togglePasswordVisibility('cvv', this)"
+                                style="right: 5px;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Net Banking -->
+                <div id="netbanking" class="payment-method-content">
+                    <div class="pay-header">Popular Banks</div>
+                    <select style="padding: 10px; width: 300px;">
+                        <option>HDFC Bank</option>
+                        <option>SBI</option>
+                        <option>ICICI Bank</option>
+                        <option>Axis Bank</option>
+                    </select>
+                </div>
+
+                <!-- COD -->
+                <div id="cod" class="payment-method-content">
+                    <div class="pay-header">Cash on Delivery</div>
+                    <p style="font-size: 14px; color: #555;">Pay cash at the time of delivery. Additional ₹40 handling
+                        fee applies.</p>
+                </div>
+
+                <button class="btn pay-btn" onclick="processPayment()">
+                    <span id="pay-btn-text">PAY NOW</span>
+                </button>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; text-align: right; font-size: 14px; color: #666;">
+            Total Payable: <span id="payable-amount" style="font-weight: bold; color: black;"></span>
+        </div>
+    </main>
+
+    <!-- Payment Processing Modal -->
+    <div id="payment-processing-modal" class="modal-overlay">
+        <div class="processing-box">
+            <div class="spinner"></div>
+            <h3>Processing Payment...</h3>
+            <p>Please do not close this window.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../data/products-data.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/payment.js"></script>
+</body>
+
+</html>

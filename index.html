@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart Clone - Online Shopping Site</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/product-card.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Category Row -->
+        <section class="container mt-1"
+            style="background: white; padding: 12px 0; margin-bottom: 8px; box-shadow: 0 1px 1px rgba(0,0,0,0.1);">
+            <div id="category-row" style="display: flex; justify-content: space-around; overflow-x: auto;">
+                <!-- Categories injected here -->
+            </div>
+        </section>
+
+        <!-- Hero Banner Section -->
+        <section class="container mb-1">
+            <div id="banner-carousel" style="position: relative; overflow: hidden; width:100%;">
+                <!-- Images injected here -->
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="container mt-1">
+            <div class="card" style="padding: 16px;">
+                <div class="d-flex justify-between align-center mb-1">
+                    <h2 style="font-size: 22px; font-weight: 500;">Best of Electronics</h2>
+                    <a href="pages/products.html?category=Electronics" class="btn btn-primary"
+                        style="font-size:12px; height: 35px; line-height: 15px;">VIEW ALL</a>
+                </div>
+                <hr style="border: 0; border-top: 1px solid #f0f0f0; margin-bottom: 16px;">
+                <div id="featured-products"
+                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+                    <!-- Products injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Products -->
+        <section class="container mt-1">
+            <div class="card" style="padding: 16px;">
+                <div class="d-flex justify-between align-center mb-1">
+                    <h2 style="font-size: 22px; font-weight: 500;">Trending Now</h2>
+                    <a href="pages/products.html" class="btn btn-primary"
+                        style="font-size:12px; height: 35px; line-height: 15px;">VIEW ALL</a>
+                </div>
+                <hr style="border: 0; border-top: 1px solid #f0f0f0; margin-bottom: 16px;">
+                <div id="trending-products"
+                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+                    <!-- Products injected here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="data/categories-data.js"></script>
+    <script src="data/products-data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Homepage specific logic
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderBanners();
+            renderFeaturedProducts();
+            renderTrendingProducts();
+        });
+
+        function renderCategories() {
+            const container = document.getElementById('category-row');
+            if (container) {
+                container.innerHTML = CATEGORIES.map(cat => `
+                    <a href="${cat.link}" style="text-align: center; min-width: 80px; text-decoration: none; color: inherit;">
+                        <img src="${getImagePath(cat.image)}" alt="${cat.name}" style="width: 64px; height: 64px; margin-bottom: 4px;">
+                        <div style="font-size: 14px; font-weight: 500;">${cat.name}</div>
+                    </a>
+                `).join('');
+            }
+        }
+
+        function renderBanners() {
+            const container = document.getElementById('banner-carousel');
+            if (container && typeof BANNERS !== 'undefined') {
+                container.innerHTML = `<img src="${getImagePath(BANNERS[0])}" style="width: 100%; display: block;">`;
+                // Add carousel logic later if needed
+            }
+        }
+
+        function renderFeaturedProducts() {
+            const container = document.getElementById('featured-products');
+            if (container && typeof PRODUCTS !== 'undefined') {
+                const electronics = PRODUCTS.filter(p => p.category === 'Electronics' || p.category === 'Mobiles').slice(0, 4);
+                container.innerHTML = electronics.map(p => createProductCard(p)).join('');
+            }
+        }
+
+        function renderTrendingProducts() {
+            const container = document.getElementById('trending-products');
+            if (container && typeof PRODUCTS !== 'undefined') {
+                // Sort by popularity or just take random
+                const trending = PRODUCTS.filter(p => p.isBestSeller).slice(0, 4);
+                container.innerHTML = trending.map(p => createProductCard(p)).join('');
+            }
+        }
+
+        function createProductCard(product) {
+            return `
+                <div class="product-card" onclick="window.location.href='pages/product-detail.html?id=${product.id}'">
+                    <div class="wishlist-icon"><i class="fa fa-heart"></i></div>
+                    <div class="img-container">
+                        <img src="${getImagePath(product.image)}" alt="${product.title}">
+                    </div>
+                    <div class="title" title="${product.title}">${product.title}</div>
+                    <div style="margin-bottom: 4px;">
+                        <span class="rating-box">${product.rating} <i class="fa fa-star" style="font-size: 10px;"></i></span>
+                        <span class="reviews">(${product.reviewCount})</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price">${formatCurrency(product.price)}</span>
+                        <span class="mrp">${formatCurrency(product.mrp)}</span>
+                        <span class="discount">${product.discount}% off</span>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+
+</html>

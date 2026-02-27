@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Deals - Flipkart Clone</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/product-card.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .deals-header {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+        }
+
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="header-placeholder"></div>
+
+    <main class="container mt-1">
+        <div class="deals-header">
+            <h1 style="font-size: 24px; font-weight: 500;">Top Deals of the Day</h1>
+            <p style="color: #878787;">Grab the best prices on top products!</p>
+        </div>
+
+        <div id="deals-container" class="deals-grid">
+            <!-- Injected via JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../data/products-data.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('deals-container');
+            // Filter products with discount > 10%
+            const deals = PRODUCTS.filter(p => p.discount >= 10);
+
+            container.innerHTML = deals.map(product => `
+                <div class="product-card" onclick="window.location.href='product-detail.html?id=${product.id}'">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist('${product.id}')">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <div class="img-container">
+                        <img src="${product.image}" loading="lazy" alt="${product.title}">
+                    </div>
+                    <div class="title" title="${product.title}">${product.title}</div>
+                    <div style="margin-bottom: 4px; display:flex; gap:6px; align-items:center;">
+                        <span class="rating-box">${product.rating} <i class="fa fa-star" style="font-size: 10px;"></i></span>
+                        <span class="reviews">(${product.reviewCount})</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price">${formatCurrency(product.price)}</span>
+                        <span class="mrp">${formatCurrency(product.mrp)}</span>
+                        <span class="discount">${product.discount}% off</span>
+                    </div>
+                </div>
+            `).join('');
+        });
+
+        function toggleWishlist(id) {
+            // Check if Wishlist object exists from previous implementations or stub
+            // Simpler to rely on users going to product detail or using the main flow, 
+            // but for now let's just alert or try to use the Wishlist logic if available.
+            // Since we didn't include wishlist.js here, we might need it.
+            // Let's dynamically load it? Or just redirect.
+
+            // Ideally we should include wishlist.js in script tags. 
+            // I will add it to the head or just do a simple check.
+            if (typeof Wishlist !== 'undefined') {
+                Wishlist.toggle(id);
+            } else {
+                showToast('Please visit product page to wishlist', 'normal');
+            }
+        }
+    </script>
+    <!-- Include Wishlist JS for functionality -->
+    <script src="../js/wishlist.js"></script>
+</body>
+
+</html>

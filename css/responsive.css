@@ -1,0 +1,47 @@
+/* Responsive Design */
+
+/* Tablet and below */
+@media (max-width: 991px) {
+    .navbar-container {
+        justify-content: space-between;
+        padding: 0 16px;
+    }
+
+    .search-bar {
+        display: none;
+        /* Hide search on tablet for now or move to separate row */
+    }
+
+    .nav-left {
+        min-width: auto;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-right span {
+        display: none;
+        /* Hide text, show only icons if needed */
+    }
+
+    .nav-cart span {
+        display: none;
+    }
+
+    .nav-cart i {
+        font-size: 20px;
+    }
+
+    .container {
+        padding: 0 4px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
